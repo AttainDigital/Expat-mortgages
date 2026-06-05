@@ -1,7 +1,41 @@
-// ─── WEBHOOK CONFIG ───────────────────────────────────────────────
-// Paste your GHL inbound webhook URL here when ready
-var GHL_WEBHOOK_URL = "YOUR_GHL_WEBHOOK_URL_HERE";
-// ──────────────────────────────────────────────────────────────────
+// ─── CONFIG ───────────────────────────────────────────────────
+var SUPABASE_URL      = "https://jecwtcwiveetxeunbtgd.supabase.co";
+var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplY3d0Y3dpdmVldHhldW5idGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNzk2MjEsImV4cCI6MjA5Mjg1NTYyMX0.VMPx2nBkq8oUfRNXqU8ZfF0Yx5U4OJMHxkAZ9TUOD_I";
+
+// EmailJS — sign up free at emailjs.com then fill in these 3 values
+var EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+var EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+var EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+// ──────────────────────────────────────────────────────────────
+
+function saveLead(data) {
+  return fetch(SUPABASE_URL + "/rest/v1/expat_mortgage_leads", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+      "Prefer": "return=minimal"
+    },
+    body: JSON.stringify(data)
+  });
+}
+
+function sendEmailAlert(data) {
+  if (typeof emailjs === "undefined" || EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID") return;
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    to_email:       "justin.whitelock@cfbrokers.co.uk",
+    form_type:      data.form_type      || "—",
+    name:           data.name           || "—",
+    email:          data.email          || "—",
+    phone:          data.phone          || "—",
+    property_type:  data.property_type  || "—",
+    property_value: data.property_value || "—",
+    loan_amount:    data.loan_amount    || "—",
+    best_time:      data.best_time      || "—",
+    message:        data.message        || "—"
+  }, EMAILJS_PUBLIC_KEY);
+}
 
 $(document).ready(function () {
 
@@ -28,51 +62,33 @@ $(document).ready(function () {
   navbarShrink();
   $(window).scroll(navbarShrink);
 
-  // Active nav link on scroll
   $("body").scrollspy({ target: "#mainNav", offset: 80 });
 
-  // Scroll to top button
   $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-      $(".scroll-to-top").fadeIn();
-    } else {
-      $(".scroll-to-top").fadeOut();
-    }
+    if ($(this).scrollTop() > 100) { $(".scroll-to-top").fadeIn(); }
+    else { $(".scroll-to-top").fadeOut(); }
   });
 
-  // AOS
   AOS.init({ duration: 800, once: true });
 
-  // Bank logo slider
   $(".clientslider").slick({
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1500,
-    arrows: false,
-    dots: false,
-    pauseOnHover: false,
+    slidesToShow: 5, slidesToScroll: 1, autoplay: true, autoplaySpeed: 1500,
+    arrows: false, dots: false, pauseOnHover: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 4 } },
-      { breakpoint: 768, settings: { slidesToShow: 3 } },
-      { breakpoint: 480, settings: { slidesToShow: 2 } }
+      { breakpoint: 768,  settings: { slidesToShow: 3 } },
+      { breakpoint: 480,  settings: { slidesToShow: 2 } }
     ]
   });
 
-  // Review slider
   $(".reviewslider").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    dots: false
+    slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 5000,
+    arrows: false, dots: false
   });
 
   $(".review-prev").on("click", function () { $(".reviewslider").slick("slickPrev"); });
   $(".review-next").on("click", function () { $(".reviewslider").slick("slickNext"); });
 
-  // Checkbox single-select (property type)
   $("input:checkbox[name='quotecheckbox']").on("click", function () {
     var $box = $(this);
     if ($box.is(":checked")) {
@@ -83,103 +99,76 @@ $(document).ready(function () {
     }
   });
 
-  // ── QUOTE FORM SUBMIT ──────────────────────────────────────────
+  // ── QUOTE FORM ─────────────────────────────────────────────
   $(".quoteform").on("submit", function (e) {
     e.preventDefault();
     var $form = $(this);
-    var $btn = $form.find("button[type=submit]");
-    var $success = $form.find(".form-success");
-    var $error = $form.find(".form-error");
+    var $btn  = $form.find("button[type=submit]");
+    var $ok   = $form.find(".form-success");
+    var $err  = $form.find(".form-error");
 
     var data = {
-      form_type: "quote",
-      property_type: $form.find("input[name='quotecheckbox']:checked").val() || "",
+      form_type:      "quote",
+      property_type:  $form.find("input[name='quotecheckbox']:checked").val() || "",
       property_value: $form.find("input[name='mortgagepropertyvalue']").val(),
-      loan_amount: $form.find("input[name='mortgageloanamount']").val(),
-      name: $form.find("input[name='mortgagename']").val(),
-      email: $form.find("input[name='mortgageemail']").val(),
-      phone: $form.find("input[name='mortgagecontactnumber']").val()
+      loan_amount:    $form.find("input[name='mortgageloanamount']").val(),
+      name:           $form.find("input[name='mortgagename']").val(),
+      email:          $form.find("input[name='mortgageemail']").val(),
+      phone:          $form.find("input[name='mortgagecontactnumber']").val()
     };
 
-    if (!data.name || !data.email) {
-      $error.text("Please fill in your name and email.").show();
-      return;
-    }
+    if (!data.name || !data.email) { $err.text("Please fill in your name and email.").show(); return; }
 
     $btn.prop("disabled", true).text("Sending...");
-    $success.hide(); $error.hide();
+    $ok.hide(); $err.hide();
 
-    if (GHL_WEBHOOK_URL === "YOUR_GHL_WEBHOOK_URL_HERE") {
-      // Webhook not yet configured — show success anyway for testing
-      $success.text("Thank you! We will be in touch shortly.").show();
-      $form[0].reset();
-      $btn.prop("disabled", false).text("Submit");
-      return;
-    }
-
-    $.ajax({
-      url: GHL_WEBHOOK_URL,
-      method: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(data),
-      success: function () {
-        $success.text("Thank you! We will be in touch shortly.").show();
+    saveLead(data)
+      .then(function (res) {
+        if (!res.ok) throw new Error();
+        sendEmailAlert(data);
+        $ok.text("Thank you! We will be in touch shortly.").show();
         $form[0].reset();
         $btn.prop("disabled", false).text("Submit");
-      },
-      error: function () {
-        $error.text("Something went wrong. Please try again or call us directly.").show();
+      })
+      .catch(function () {
+        $err.text("Something went wrong. Please try again or call us directly.").show();
         $btn.prop("disabled", false).text("Submit");
-      }
-    });
+      });
   });
 
-  // ── CALLBACK FORM SUBMIT ───────────────────────────────────────
+  // ── CALLBACK FORM ──────────────────────────────────────────
   $(".callbackform").on("submit", function (e) {
     e.preventDefault();
     var $form = $(this);
-    var $btn = $form.find("button[type=submit]");
-    var $success = $form.find(".form-success");
-    var $error = $form.find(".form-error");
+    var $btn  = $form.find("button[type=submit]");
+    var $ok   = $form.find(".form-success");
+    var $err  = $form.find(".form-error");
 
     var data = {
       form_type: "callback",
       best_time: $form.find("input[name='callbackbesttime']").val(),
-      name: $form.find("input[name='callbackname']").val(),
-      phone: $form.find("input[name='callbacknumber']").val(),
-      message: $form.find("textarea[name='callbackmessage']").val()
+      name:      $form.find("input[name='callbackname']").val(),
+      phone:     $form.find("input[name='callbacknumber']").val(),
+      message:   $form.find("textarea[name='callbackmessage']").val()
     };
 
-    if (!data.name || !data.phone) {
-      $error.text("Please fill in your name and contact number.").show();
-      return;
-    }
+    if (!data.name || !data.phone) { $err.text("Please fill in your name and contact number.").show(); return; }
 
     $btn.prop("disabled", true).text("Sending...");
-    $success.hide(); $error.hide();
+    $ok.hide(); $err.hide();
 
-    if (GHL_WEBHOOK_URL === "YOUR_GHL_WEBHOOK_URL_HERE") {
-      $success.text("Thank you! An expert will call you back shortly.").show();
-      $form[0].reset();
-      $btn.prop("disabled", false).text("Send Message");
-      return;
-    }
-
-    $.ajax({
-      url: GHL_WEBHOOK_URL,
-      method: "POST",
-      contentType: "application/json",
-      data: JSON.stringify(data),
-      success: function () {
-        $success.text("Thank you! An expert will call you back shortly.").show();
+    saveLead(data)
+      .then(function (res) {
+        if (!res.ok) throw new Error();
+        sendEmailAlert(data);
+        $ok.text("Thank you! An expert will call you back shortly.").show();
         $form[0].reset();
         $btn.prop("disabled", false).text("Send Message");
-      },
-      error: function () {
-        $error.text("Something went wrong. Please try again or call us directly.").show();
+      })
+      .catch(function () {
+        $err.text("Something went wrong. Please try again or call us directly.").show();
         $btn.prop("disabled", false).text("Send Message");
-      }
-    });
+      });
   });
 
 });
