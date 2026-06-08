@@ -73,10 +73,10 @@ a:focus,a:hover,a:active { color:#00142d; }
 
 /* BANK TICKER */
 .logo-ticker { margin-top:60px; padding:30px 0; border-top:2px solid #002b60; border-bottom:2px solid #002b60; background:white; overflow:hidden; }
-.logo-ticker__track { display:flex; align-items:center; width:max-content; animation:logo-scroll 35s linear infinite; }
+.logo-ticker__track { display:flex; flex-wrap:nowrap; align-items:center; animation:logo-scroll 35s linear infinite; }
 .logo-ticker__track .sprite { margin-right:70px; flex-shrink:0; }
 .logo-ticker:hover .logo-ticker__track { animation-play-state:paused; }
-@keyframes logo-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@keyframes logo-scroll { from { transform:translateX(0); } to { transform:translateX(-5202px); } }
 .sprite { background-image:url("../img/spritesheet_new.png"); background-repeat:no-repeat; display:block; }
 .sprite-logo1 { width:209px; height:105px; background-position:0 0; }
 .sprite-logo10 { width:315px; height:105px; background-position:-209px 0; }
@@ -193,6 +193,6 @@ footer .copyright { margin-top:40px; }
   .home-cols .row                  { flex-direction: row !important; flex-wrap: wrap !important; }
   .home-cols .row .col             { flex: 0 0 50% !important; max-width: 50% !important; min-height: 0 !important; padding: 12px 8px; }
 
-  /* Logo ticker — scale sprites down on mobile */
-  .logo-ticker__track .sprite      { transform: scale(0.6); transform-origin: left center; margin-right: 40px; margin-bottom: -42px; }
+  /* Logo ticker — reduce height on mobile */
+  .logo-ticker                     { padding: 16px 0; }
 }
