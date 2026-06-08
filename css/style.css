@@ -106,7 +106,9 @@ a:focus,a:hover,a:active { color:#00142d; }
 .mortgage-quote input,.mortgage-quote textarea { border:2px solid #002b60; height:auto; padding:10px; background:#d1dae6; width:100%; }
 .mortgage-quote button { font-size:1.125rem; padding:12px 20px; width:100%; display:block; }
 .consent-row { display:flex; align-items:flex-start; gap:10px; margin:20px 0; }
-.consent-row input[type="checkbox"] { width:16px; height:16px; min-width:16px; margin-top:3px; cursor:pointer; accent-color:#002b60; opacity:1; position:static; }
+.consent-row input[type="checkbox"] { display:inline-block !important; opacity:1 !important; position:static !important; width:16px !important; height:16px !important; min-width:16px; margin-top:3px; cursor:pointer; accent-color:#002b60; flex-shrink:0; }
+.consent-row input[type="checkbox"] + label { padding-left:0 !important; }
+.consent-row input[type="checkbox"] + label:before { display:none !important; content:none !important; }
 .consent-row label { font-size:0.875rem !important; font-weight:400 !important; color:#555; margin-top:0; padding-left:0; cursor:pointer; }
 .mortgage-quote input[type="checkbox"],.mortgage-quote input[type="radio"] { opacity:0; position:absolute; width:20px; height:20px; cursor:pointer; }
 .mortgage-quote input[type="radio"],.mortgage-quote input[type="checkbox"] { margin:4px 0 0; line-height:normal; width:100%; height:100%; }
@@ -191,7 +193,7 @@ footer .copyright { margin-top:40px; }
 
   /* Logo slider — absolute centering so sprites never overflow their slide */
   .clientslider                    { overflow: hidden; }
-  .slick-slide                     { margin: 0 2px; }
-  .clientslider .slick-slide > div { position: relative; overflow: hidden; height: 60px; }
+  .slick-slide                     { margin: 0 2px; overflow: hidden; }
+  .clientslider .slick-slide > div { position: relative; overflow: hidden; height: 65px; }
   .clientslider .sprite            { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.55); }
 }
