@@ -203,7 +203,10 @@
           <input type="text" name="mortgageemail" class="form-control">
           <label>Contact number (optional)</label>
           <input type="text" name="mortgagecontactnumber" class="form-control">
-          <div class="spacer-double"></div>
+          <div class="consent-row">
+            <input type="checkbox" id="agreement-quote" name="agreement" value="Agreed" required checked>
+            <label for="agreement-quote">By submitting your details, I understand you will hold my personal data on your database. An advisor will then be in touch by telephone to discuss my requirements.</label>
+          </div>
           <div class="spacer-double"></div>
           <div class="form-success"></div>
           <div class="form-error"></div>
@@ -240,8 +243,8 @@
           <label>Message (optional)</label>
           <textarea name="callbackmessage" class="form-control" rows="4"></textarea>
           <div class="spacer-double"></div>
-          <div style="position:relative; margin:16px 0;">
-            <input type="checkbox" id="agreement" name="agreement" value="Agreed" required>
+          <div class="consent-row">
+            <input type="checkbox" id="agreement" name="agreement" value="Agreed" required checked>
             <label for="agreement">By submitting your details, I understand you will hold my personal data on your database. An advisor will then be in touch by telephone to discuss my requirements.</label>
           </div>
           <div class="spacer-double"></div>
