@@ -126,9 +126,7 @@ $(document).ready(function () {
       .then(function (res) {
         if (!res.ok) throw new Error();
         sendEmailAlert(data);
-        $ok.text("Thank you! We will be in touch shortly.").show();
-        $form[0].reset();
-        $btn.prop("disabled", false).text("Submit");
+        window.location.href = "thank-you.html";
       })
       .catch(function () {
         $err.text("Something went wrong. Please try again or call us directly.").show();
@@ -161,9 +159,7 @@ $(document).ready(function () {
       .then(function (res) {
         if (!res.ok) throw new Error();
         sendEmailAlert(data);
-        $ok.text("Thank you! An expert will call you back shortly.").show();
-        $form[0].reset();
-        $btn.prop("disabled", false).text("Send Message");
+        window.location.href = "thank-you.html";
       })
       .catch(function () {
         $err.text("Something went wrong. Please try again or call us directly.").show();
