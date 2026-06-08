@@ -71,10 +71,12 @@ a:focus,a:hover,a:active { color:#00142d; }
 .home-why ul li span { color:#002b60; margin-right:5px; }
 .home-why ul li p { color:black; }
 
-/* BANK SLIDER */
-.clientslider { margin-top:100px; padding:40px 0; border-top:2px solid #002b60; border-bottom:2px solid #002b60; background:white; }
-.clientslider div { outline:none; }
-.slick-slide { margin:0 40px; }
+/* BANK TICKER */
+.logo-ticker { margin-top:60px; padding:30px 0; border-top:2px solid #002b60; border-bottom:2px solid #002b60; background:white; overflow:hidden; }
+.logo-ticker__track { display:flex; align-items:center; width:max-content; animation:logo-scroll 35s linear infinite; }
+.logo-ticker__track .sprite { margin-right:70px; flex-shrink:0; }
+.logo-ticker:hover .logo-ticker__track { animation-play-state:paused; }
+@keyframes logo-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 .sprite { background-image:url("../img/spritesheet_new.png"); background-repeat:no-repeat; display:block; }
 .sprite-logo1 { width:209px; height:105px; background-position:0 0; }
 .sprite-logo10 { width:315px; height:105px; background-position:-209px 0; }
@@ -100,9 +102,9 @@ a:focus,a:hover,a:active { color:#00142d; }
 .mortgage-quote li { vertical-align:top; box-shadow:0 1px 2px 1px #ddd; transition:.4s; margin-bottom:0.8em; background:#d1dae6; }
 .mortgage-quote li:last-child { margin-bottom:2em; }
 .mortgage-quote li:hover { background-color:white; }
-.mortgage-quote ul label { display:flex; align-items:center; position:relative; width:100%; padding:12px 5px 12px 10px; cursor:pointer; border:2px solid #002b60; border-radius:5px; font-size:22px; }
+.mortgage-quote ul label { display:flex; align-items:center; position:relative; width:100%; padding:12px 5px 12px 10px; cursor:pointer; border:2px solid #002b60; border-radius:5px; font-size:1rem; font-weight:400; }
 .mortgage-quote label { text-align:left; color:#002b60; display:inherit; padding-left:2px; margin-top:20px; font-size:1.125rem; font-weight:700; }
-.mortgage-quote p { text-align:left; color:#002b60; display:inherit; padding-left:2px; margin-top:20px; font-size:1rem; }
+.mortgage-quote p { text-align:left; color:#002b60; display:inherit; padding-left:2px; margin-top:20px; font-size:1rem; font-weight:700; }
 .mortgage-quote input,.mortgage-quote textarea { border:2px solid #002b60; height:auto; padding:10px; background:#d1dae6; width:100%; }
 .mortgage-quote button { font-size:1.125rem; padding:12px 20px; width:100%; display:block; }
 .consent-row { display:flex; align-items:flex-start; gap:10px; margin:20px 0; }
@@ -191,9 +193,6 @@ footer .copyright { margin-top:40px; }
   .home-cols .row                  { flex-direction: row !important; flex-wrap: wrap !important; }
   .home-cols .row .col             { flex: 0 0 50% !important; max-width: 50% !important; min-height: 0 !important; padding: 12px 8px; }
 
-  /* Logo slider — absolute centering, scale(0.45) ensures widest sprite (364px→164px) fits any slide */
-  .clientslider                    { overflow: hidden; }
-  .slick-slide                     { margin: 0 2px; overflow: hidden; }
-  .clientslider .slick-slide > div { position: relative; overflow: hidden; height: 55px; }
-  .clientslider .sprite            { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.45); }
+  /* Logo ticker — scale sprites down on mobile */
+  .logo-ticker__track .sprite      { transform: scale(0.6); transform-origin: left center; margin-right: 40px; margin-bottom: -42px; }
 }

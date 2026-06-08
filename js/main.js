@@ -71,17 +71,7 @@ $(document).ready(function () {
 
   AOS.init({ duration: 800, once: true });
 
-  $(".clientslider").slick({
-    slidesToShow: 5, slidesToScroll: 1, autoplay: true, autoplaySpeed: 1500,
-    arrows: false, dots: false, pauseOnHover: false,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 4 } },
-      { breakpoint: 768,  settings: { slidesToShow: 3 } },
-      { breakpoint: 480,  settings: { slidesToShow: 3 } }
-    ]
-  });
-
-  $(".reviewslider").slick({
+$(".reviewslider").slick({
     slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: 5000,
     arrows: false, dots: false
   });
