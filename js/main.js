@@ -126,7 +126,7 @@ $(document).ready(function () {
       .then(function (res) {
         if (!res.ok) throw new Error();
         sendEmailAlert(data);
-        window.location.href = "thank-you.html";
+        window.location.href = "/thank-you";
       })
       .catch(function () {
         $err.text("Something went wrong. Please try again or call us directly.").show();
@@ -159,7 +159,7 @@ $(document).ready(function () {
       .then(function (res) {
         if (!res.ok) throw new Error();
         sendEmailAlert(data);
-        window.location.href = "thank-you.html";
+        window.location.href = "/thank-you";
       })
       .catch(function () {
         $err.text("Something went wrong. Please try again or call us directly.").show();
