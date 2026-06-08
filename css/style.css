@@ -191,9 +191,9 @@ footer .copyright { margin-top:40px; }
   .home-cols .row                  { flex-direction: row !important; flex-wrap: wrap !important; }
   .home-cols .row .col             { flex: 0 0 50% !important; max-width: 50% !important; min-height: 0 !important; padding: 12px 8px; }
 
-  /* Logo slider — absolute centering so sprites never overflow their slide */
+  /* Logo slider — absolute centering, scale(0.45) ensures widest sprite (364px→164px) fits any slide */
   .clientslider                    { overflow: hidden; }
   .slick-slide                     { margin: 0 2px; overflow: hidden; }
-  .clientslider .slick-slide > div { position: relative; overflow: hidden; height: 65px; }
-  .clientslider .sprite            { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.55); }
+  .clientslider .slick-slide > div { position: relative; overflow: hidden; height: 55px; }
+  .clientslider .sprite            { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.45); }
 }
