@@ -187,6 +187,6 @@ footer .copyright { margin-top:40px; }
 
   /* Logo slider — scale sprites down to fit narrow screens */
   .clientslider                    { overflow: hidden; }
-  .slick-slide                     { margin: 0 6px; }
-  .clientslider .sprite            { transform: scale(0.5); transform-origin: left center; margin-bottom: -53px; }
+  .slick-slide                     { margin: 0 4px; overflow: hidden; }
+  .clientslider .sprite            { transform: scale(0.55); transform-origin: center center; margin: -24px auto -24px; }
 }
