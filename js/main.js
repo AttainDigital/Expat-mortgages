@@ -2,10 +2,6 @@
 var SUPABASE_URL      = "https://jecwtcwiveetxeunbtgd.supabase.co";
 var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplY3d0Y3dpdmVldHhldW5idGdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNzk2MjEsImV4cCI6MjA5Mjg1NTYyMX0.VMPx2nBkq8oUfRNXqU8ZfF0Yx5U4OJMHxkAZ9TUOD_I";
 
-// EmailJS — sign up free at emailjs.com then fill in these 3 values
-var EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-var EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-var EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
 // ──────────────────────────────────────────────────────────────
 
 function saveLead(data) {
@@ -22,20 +18,13 @@ function saveLead(data) {
 }
 
 function sendEmailAlert(data) {
-  if (typeof emailjs === "undefined" || EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID") return;
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    to_email:       "justin.whitelock@cfbrokers.co.uk",
-    form_type:      data.form_type      || "—",
-    name:           data.name           || "—",
-    email:          data.email          || "—",
-    phone:          data.phone          || "—",
-    property_type:  data.property_type  || "—",
-    property_value: data.property_value || "—",
-    loan_amount:    data.loan_amount    || "—",
-    best_time:      data.best_time      || "—",
-    message:        data.message        || "—"
-  }, EMAILJS_PUBLIC_KEY);
+  fetch(SUPABASE_URL + "/functions/v1/send-lead-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 }
+
 
 $(document).ready(function () {
 
