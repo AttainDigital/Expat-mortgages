@@ -217,11 +217,11 @@
           <label>Loan amount required (optional)</label>
           <input type="text" name="mortgageloanamount" class="form-control">
           <label>Contact name</label>
-          <input type="text" name="mortgagename" class="form-control">
+          <input type="text" name="mortgagename" class="form-control" required>
           <label>Contact Email</label>
-          <input type="text" name="mortgageemail" class="form-control">
-          <label>Contact number (optional)</label>
-          <input type="text" name="mortgagecontactnumber" class="form-control">
+          <input type="email" name="mortgageemail" class="form-control" required>
+          <label>Contact number</label>
+          <input type="tel" name="mortgagecontactnumber" class="form-control" required>
           <div class="consent-row">
             <input type="checkbox" id="agreement-quote" name="agreement" value="Agreed" required checked>
             <label for="agreement-quote">By submitting your details, I understand you will hold my personal data on your database. An advisor will then be in touch by telephone to discuss my requirements.</label>

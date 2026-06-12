@@ -96,7 +96,7 @@ $(".reviewslider").slick({
       phone:          $form.find("input[name='mortgagecontactnumber']").val()
     };
 
-    if (!data.name || !data.email) { $err.text("Please fill in your name and email.").show(); return; }
+    if (!data.name || !data.email || !data.phone) { $err.text("Please fill in your name, email and contact number.").show(); return; }
 
     $btn.prop("disabled", true).text("Sending...");
     $ok.hide(); $err.hide();
