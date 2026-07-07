@@ -432,7 +432,7 @@
               </a>
             </li>
           </ul>
-          <div class="footer-mobile-cta mt-4">
+          <div class="footer-mobile-cta">
             <a href="#callback" class="btn btn-callback js-scroll-trigger">Request Callback</a>
             <a href="#quote" class="btn btn-specialist js-scroll-trigger">Speak To A Specialist</a>
           </div>
@@ -448,6 +448,7 @@
     <div class="container">
       <small>Mortgage London is a trading style of City Finance Brokers Limited which is authorised and regulated by the Financial Conduct Authority. Registered office address: Tower 42, 25 Old Broad Street, London, England, EC2N 1HN. Registered in England and Wales, Company number 09881116. Some types of buy to let mortgages may not be regulated by the Financial Conduct Authority.</small>
       <small>AS A MORTGAGE IS SECURED AGAINST YOUR HOME OR PROPERTY, IT COULD BE REPOSSESSED IF YOU DO NOT KEEP UP THE MORTGAGE REPAYMENTS. THINK CAREFULLY BEFORE SECURING OTHER DEBTS AGAINST YOUR HOME.</small>
+      <p class="postfooter-copyright">&copy; <span id="year-mobile"></span> Mortgage London</p>
     </div>
   </div>
 
@@ -464,6 +465,6 @@
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../js/main.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>var y=new Date().getFullYear();document.getElementById("year").textContent=y;var ym=document.getElementById("year-mobile");if(ym)ym.textContent=y;</script>
 </body>
 </html>
