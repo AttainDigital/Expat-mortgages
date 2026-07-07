@@ -2,8 +2,8 @@ body { font-family: 'Lato', sans-serif; }
 h1,h2,h3,h4,h5,h6 { font-weight:400; font-family:'Montserrat',sans-serif; text-transform:none; }
 h2,h3 { letter-spacing:-1px; }
 section { padding:6rem 0; }
-section h2 { font-size:2.25rem; line-height:2rem; }
-@media(min-width:992px){ section h2 { font-size:3rem; line-height:2.5rem; } }
+section h2 { font-size:2.25rem; line-height:1.2; }
+@media(min-width:992px){ section h2 { font-size:3rem; line-height:1.2; } }
 a { color:#002b60; }
 a:focus,a:hover,a:active { color:#00142d; }
 .btn { border-width:2px; }
