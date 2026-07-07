@@ -71,6 +71,8 @@ a:focus,a:hover,a:active { color:#00142d; }
 .home-why ul li span { color:#002b60; margin-right:5px; }
 .home-why ul li p { color:black; }
 
+@media screen and (max-width:768px){ .home-why,.home-why h2,.home-why strong,.home-why p,.home-why ul { text-align:left; } .home-why ul { display:block; } }
+
 /* BANK TICKER */
 .logo-ticker { margin-top:60px; padding:30px 0; border-top:2px solid #002b60; border-bottom:2px solid #002b60; background:white; overflow:hidden; }
 .logo-ticker__track { display:flex; flex-wrap:nowrap; align-items:center; animation:logo-scroll 35s linear infinite; }
