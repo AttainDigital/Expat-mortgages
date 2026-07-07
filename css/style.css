@@ -46,6 +46,9 @@ a:focus,a:hover,a:active { color:#00142d; }
 .banner { background:url(../img/banner.jpg) top center no-repeat; background-size:cover; padding:120px 0 60px; position:relative; }
 @media screen and (max-width:768px){ .banner { padding-top:180px; } .banner:before { content:""; position:absolute; top:0; left:0; background:rgba(0,0,0,0.5); width:100%; height:100%; } }
 .banner h1 { color:white; font-size:3rem; margin-top:1rem; }
+.banner-cta-group { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:2rem; }
+.banner .btn-banner-white { background:#fff; color:#002b60; border:2px solid #fff; }
+.banner .btn-banner-white:hover { background:transparent; color:#fff; border:2px solid #fff; }
 .banner .btn { border:2px solid #002b60; background:#002b60; padding:15px 35px; border-radius:0; color:#fff; font-size:1rem; text-transform:uppercase; font-weight:bold; letter-spacing:1px; position:relative; overflow:hidden !important; transition:all .3s ease-in-out; z-index:2; }
 .banner .btn span { z-index:999; position:relative; }
 .banner .btn:before { content:''; width:0%; height:100%; display:block; background:#fff; position:absolute; transform:skewX(-20deg); left:-10%; opacity:1; top:0; z-index:1; transition:all 0.7s cubic-bezier(0.77,0,0.175,1); }
@@ -159,6 +162,8 @@ a:focus,a:hover,a:active { color:#00142d; }
 /* FOOTER */
 footer { padding-top:2rem; padding-bottom:2rem; background-color:#002b60; color:#fff; }
 @media screen and (max-width:768px){ footer { padding:2rem 1rem; } }
+.footer-mobile-cta { display:none; }
+@media screen and (max-width:768px){ .footer-mobile-cta { display:flex; flex-direction:column; gap:12px; padding:0 0 2rem; } .footer-mobile-cta .btn { display:block; width:100%; text-align:center; font-size:1rem; padding:14px; border-radius:0; font-weight:700; letter-spacing:1px; text-transform:uppercase; } .footer-mobile-cta .btn-callback { background:#fff; color:#002b60; border:2px solid #fff; } .footer-mobile-cta .btn-specialist { background:transparent; color:#fff; border:2px solid #fff; } }
 footer a { color:#fff; transition:all 250ms ease-in-out; }
 footer a:hover { color:#216eb1; text-decoration:none; }
 footer h4 { font-weight:400; }
