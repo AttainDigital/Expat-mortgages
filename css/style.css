@@ -56,7 +56,7 @@ a:focus,a:hover,a:active { color:#00142d; }
 
 /* SERVICE COLS */
 .home-cols { text-align:center; }
-.home-cols h3 { color:#002b60; margin-bottom:4rem; }
+.home-cols h3 { color:#002b60; margin-bottom:4rem; font-size:2rem; padding:0 20px; }
 .home-cols img { margin-bottom:1rem; }
 .home-cols p { color:#002b60; }
 @media screen and (max-width:767px){ .home-cols .row { flex-direction:column; } .home-cols .row .col { min-height:190px; } }
