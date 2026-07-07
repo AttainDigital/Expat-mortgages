@@ -22,11 +22,20 @@
   <!-- Custom -->
   <link href="../css/style.css?v=3" rel="stylesheet">
   <style>
+    .banner { position: relative; }
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.20);
+      z-index: 1;
+    }
+    .banner .container { position: relative; z-index: 2; }
     .banner-subtitle {
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.92);
       font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 560px;
+      line-height: 1.75;
+      max-width: 720px;
       margin: 18px auto 0;
     }
   </style>
@@ -79,7 +88,7 @@
   <section class="banner">
     <div class="container">
       <div class="row">
-        <div class="col-md-7 mx-auto text-center">
+        <div class="col-md-9 col-lg-8 mx-auto text-center">
           <h1 data-aos="fade-up">
             UK Mortgage Solutions for <strong>American Expats & US Citizens Living Abroad</strong>
           </h1>

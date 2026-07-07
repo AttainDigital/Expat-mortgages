@@ -70,11 +70,20 @@
   </nav>
 
   <style>
+    .banner { position: relative; }
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.20);
+      z-index: 1;
+    }
+    .banner .container { position: relative; z-index: 2; }
     .banner-subtitle {
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.92);
       font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 580px;
+      line-height: 1.75;
+      max-width: 720px;
       margin: 18px auto 0;
     }
   </style>
@@ -83,7 +92,7 @@
   <section class="banner">
     <div class="container">
       <div class="row">
-        <div class="col-md-7 mx-auto text-center">
+        <div class="col-md-9 col-lg-8 mx-auto text-center">
           <h1 data-aos="fade-up">UK Mortgage Specialists for <strong>Expats & International Clients Living Abroad</strong></h1>
           <p class="banner-subtitle" data-aos="fade-in" data-aos-delay="200">
             We help expats and overseas nationals navigate the UK mortgage market — whether you earn in a foreign currency, have no UK credit history, or simply need a broker who understands your situation. Our specialists work with lenders across the market to find the right solution for you. Fill in the form below for a free, no-obligation consultation.
